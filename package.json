@@ -1,0 +1,35 @@
+{
+  "name": "pattern-collector-anyjs-build-story",
+  "version": "1.2.1",
+  "description": "build story from any js from supplied import and use lines",
+  "keywords": [
+    "pattern",
+    "regex",
+    "parser",
+    "import",
+    "analyzer",
+    "esm",
+    "extractor"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./index.js"
+  },
+  "files": [
+    "bin/",
+    "index.js",
+    "README.md",
+    "LICENSE"
+  ],
+  "homepage": "https://github.com/keshavsoft/pattern-collector-anyjs-build-story#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/keshavsoft/pattern-collector-anyjs-build-story"
+  },
+  "bugs": {
+    "url": "https://github.com/keshavsoft/pattern-collector-anyjs-build-story/issues"
+  },
+  "devDependencies": {
+    "pattern-collector-anyjs-pull-lines": "^1.5.3"
+  }
+}
