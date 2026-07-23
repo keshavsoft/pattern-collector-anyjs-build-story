@@ -1,4 +1,5 @@
 const startFunc = ({ importLines, useLines }) => {
+
     const importMissInUse = importLines.map(loopImport => {
         const findUser = useLines.find(element => {
             return element.variableName === loopImport.variable
@@ -27,8 +28,32 @@ const startFunc = ({ importLines, useLines }) => {
         importLines,
         useLines,
         importMissInUse,
-        useMissInImport
+        useMissInImport,
+        summary: buildSummary({ importLines, useLines })
     };
+};
+
+const buildSummary = ({ importLines, useLines }) => {
+    const importLineNumbers = importLines.map(element => {
+        return element.lineNumber;
+    });
+
+    const useLineNumbers = useLines.map(element => {
+        return element.lineNumber;
+    });
+
+    let returnObject = {};
+    returnObject.importSummary = {};
+    returnObject.importSummary.minLineNumber = Math.min(...importLineNumbers);
+    returnObject.importSummary.maxLineNumber = Math.max(...importLineNumbers);
+    returnObject.importSummary.lineCount = importLineNumbers.length;
+
+    returnObject.consumeSummary = {};
+    returnObject.consumeSummary.minLineNumber = Math.min(...useLineNumbers);
+    returnObject.consumeSummary.maxLineNumber = Math.max(...useLineNumbers);
+    returnObject.consumeSummary.lineCount = useLineNumbers.length;
+
+    return returnObject;
 };
 
 export default startFunc;
