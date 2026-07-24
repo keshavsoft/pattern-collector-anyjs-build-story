@@ -65,8 +65,8 @@ jobs:
             https://api.github.com/repos/keshavsoft/pattern-collector-anyjs/dispatches \
             -d '{"event_type":"dependency-updated"}')
           if [ "$RESPONSE1" = "204" ]; then
-            echo "* **[pattern-collector-anyjs](https://github.com/keshavsoft/pattern-collector-anyjs)**: ✅ Dispatched successfully (HTTP 204)" >> $GITHUB_STEP_SUMMARY
+            echo "* **<a href=\"https://github.com/keshavsoft/pattern-collector-anyjs\" target=\"_blank\">pattern-collector-anyjs</a>**: ✅ Dispatched successfully (HTTP 204)" >> $GITHUB_STEP_SUMMARY
           else
-            echo "* **[pattern-collector-anyjs](https://github.com/keshavsoft/pattern-collector-anyjs)**: ❌ Failed to dispatch (HTTP $RESPONSE1)" >> $GITHUB_STEP_SUMMARY
+            echo "* **<a href=\"https://github.com/keshavsoft/pattern-collector-anyjs\" target=\"_blank\">pattern-collector-anyjs</a>**: ❌ Failed to dispatch (HTTP $RESPONSE1)" >> $GITHUB_STEP_SUMMARY
             cat resp1.json >> $GITHUB_STEP_SUMMARY
           fi
