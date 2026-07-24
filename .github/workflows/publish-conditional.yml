@@ -33,7 +33,7 @@ jobs:
           
           echo "### 🚀 NPM Publication Summary" >> $GITHUB_STEP_SUMMARY
           echo "* **Package**: \`$PACKAGE_NAME\`" >> $GITHUB_STEP_SUMMARY
-          echo "* **Git Repository**: [https://github.com/${{ github.repository }}](https://github.com/${{ github.repository }})" >> $GITHUB_STEP_SUMMARY
+          echo "* **Git Repository**: <a href=\"https://github.com/${{ github.repository }}\" target=\"_blank\">https://github.com/${{ github.repository }}</a>" >> $GITHUB_STEP_SUMMARY
           echo "* **Before Publish Version**: \`$BEFORE_VERSION\`" >> $GITHUB_STEP_SUMMARY
           
           if npm view "${PACKAGE_NAME}@${PACKAGE_VERSION}" version >/dev/null 2>&1; then
@@ -47,7 +47,7 @@ jobs:
             echo "* **Status**: ✅ Successfully Published to NPM" >> $GITHUB_STEP_SUMMARY
             echo "was_published=true" >> $GITHUB_OUTPUT
           fi
-          echo "* **Registry Link**: [https://www.npmjs.com/package/$PACKAGE_NAME](https://www.npmjs.com/package/$PACKAGE_NAME)" >> $GITHUB_STEP_SUMMARY
+          echo "* **Registry Link**: <a href=\"https://www.npmjs.com/package/$PACKAGE_NAME\" target=\"_blank\">https://www.npmjs.com/package/$PACKAGE_NAME</a>" >> $GITHUB_STEP_SUMMARY
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
