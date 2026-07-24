@@ -1,9 +1,14 @@
 const startFunc = ({ importLines, useLines }) => {
+    let useMissInImport;
 
     const importMissInUse = importLines.map(loopImport => {
-        const findUser = useLines.find(element => {
-            return element.variableName === loopImport.variable
-        });
+        let findUser;
+
+        if (useLines) {
+            findUser = useLines.find(element => {
+                return element.variableName === loopImport.variable
+            });
+        };
 
         return {
             ...loopImport,
@@ -12,17 +17,19 @@ const startFunc = ({ importLines, useLines }) => {
         };
     });
 
-    const useMissInImport = useLines.map(loopUse => {
-        const findImport = importLines.find(element => {
-            return element.variable === loopUse.variableName
-        });
+    if (useLines) {
+        useMissInImport = useLines.map(loopUse => {
+            const findImport = importLines.find(element => {
+                return element.variable === loopUse.variableName
+            });
 
-        return {
-            ...loopUse,
-            isFound: findImport ? true : false,
-            usedLine: findImport
-        };
-    });
+            return {
+                ...loopUse,
+                isFound: findImport ? true : false,
+                usedLine: findImport
+            };
+        });
+    };
 
     return {
         importLines,
@@ -38,10 +45,6 @@ const buildSummary = ({ importLines, useLines }) => {
         return element.lineNumber;
     });
 
-    const useLineNumbers = useLines.map(element => {
-        return element.lineNumber;
-    });
-
     let returnObject = {};
     returnObject.importSummary = {};
     returnObject.importSummary.minLineNumber = Math.min(...importLineNumbers);
@@ -49,9 +52,16 @@ const buildSummary = ({ importLines, useLines }) => {
     returnObject.importSummary.lineCount = importLineNumbers.length;
 
     returnObject.consumeSummary = {};
-    returnObject.consumeSummary.minLineNumber = Math.min(...useLineNumbers);
-    returnObject.consumeSummary.maxLineNumber = Math.max(...useLineNumbers);
-    returnObject.consumeSummary.lineCount = useLineNumbers.length;
+
+    if (useLines) {
+        const useLineNumbers = useLines.map(element => {
+            return element.lineNumber;
+        });
+
+        returnObject.consumeSummary.minLineNumber = Math.min(...useLineNumbers);
+        returnObject.consumeSummary.maxLineNumber = Math.max(...useLineNumbers);
+        returnObject.consumeSummary.lineCount = useLineNumbers.length;
+    };
 
     return returnObject;
 };
