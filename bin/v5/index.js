@@ -1,5 +1,9 @@
-const startFunc = ({ importLines, useLines }) => {
+import buildSummary from "./buildSummary.js";
+import getAllLinesStory from "./totalLinesStory.js";
+
+const startFunc = ({ importLines, useLines, allLines }) => {
     let useMissInImport;
+    let allLinesStory;
 
     const importMissInUse = importLines.map(loopImport => {
         let findUser;
@@ -31,7 +35,12 @@ const startFunc = ({ importLines, useLines }) => {
         });
     };
 
+    if (allLines) {
+        allLinesStory = getAllLinesStory(allLines)
+    };
+
     return {
+        allLinesStory,
         importLines,
         useLines,
         importMissInUse,
@@ -40,7 +49,7 @@ const startFunc = ({ importLines, useLines }) => {
     };
 };
 
-const buildSummary = ({ importLines, useLines }) => {
+const buildSummary1 = ({ importLines, useLines }) => {
     const importLineNumbers = importLines.map(element => {
         return element.lineNumber;
     });
