@@ -1,6 +1,6 @@
 {
   "name": "pattern-collector-anyjs-build-story",
-  "version": "1.6.1",
+  "version": "1.7.1",
   "description": "build story from any js from supplied import and use lines",
   "keywords": [
     "pattern",
@@ -30,6 +30,6 @@
     "url": "https://github.com/keshavsoft/pattern-collector-anyjs-build-story/issues"
   },
   "devDependencies": {
-    "pattern-collector-anyjs-pull-lines": "^1.5.3"
+    "pattern-collector-anyjs-pull-lines": "^1.12.13"
   }
 }
