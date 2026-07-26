@@ -1,6 +1,6 @@
 {
   "name": "pattern-collector-anyjs-build-story",
-  "version": "1.8.2",
+  "version": "1.9.1",
   "description": "build story from any js from supplied import and use lines",
   "keywords": [
     "pattern",
